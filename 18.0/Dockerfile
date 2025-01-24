@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     libxml2 \
     libxslt1.1 \
-    libldap-2.4-2 \
+    libldap-common \
     libsasl2-2 \
     fonts-noto-cjk \
     wkhtmltopdf \
