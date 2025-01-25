@@ -12,9 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     libxml2-dev \
     libxslt1-dev \
-    libldap-common \
-    libldap-2.5-0 \
-    libsasl2-dev \
+    libldap2-dev \  # Required for python-ldap
+    libsasl2-dev \  # Required for python-ldap
     libssl-dev \
     node-less \
     npm \
