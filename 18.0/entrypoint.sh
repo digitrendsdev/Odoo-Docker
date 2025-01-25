@@ -26,6 +26,13 @@ fi
 
 echo "PostgreSQL is ready."
 
+# Check if the database exists
+if ! PGPASSWORD="$DB_PASSWORD" psql -h "$DB_HOST" -U "$DB_USER" -p "$DB_PORT" -lqt | cut -d \| -f 1 | grep -qw "$DB_NAME"; then
+  echo "Database $DB_NAME does not exist. Creating it..."
+  PGPASSWORD="$DB_PASSWORD" createdb -h "$DB_HOST" -U "$DB_USER" -p "$DB_PORT" "$DB_NAME"
+  echo "Database $DB_NAME created."
+fi
+
 # Start Odoo
 echo "Starting Odoo..."
 exec "$@"
