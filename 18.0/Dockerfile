@@ -1,5 +1,5 @@
 # Use Ubuntu 22.04 as the base image
-FROM ubuntu:22.04 as builder
+FROM ubuntu:22.04 AS builder
 
 # Set environment variables
 ENV LANG=C.UTF-8 \
@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     npm \
     wkhtmltopdf \
     python3-pip \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
+    python3-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install rtlcss for right-to-left language support
 RUN npm install -g rtlcss
@@ -47,8 +47,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsasl2-2 \
     fonts-noto-cjk \
     wkhtmltopdf \
-    python3 \
-    && rm -rf /var/lib/apt/lists/*
+    python3 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy installed Python packages from the builder stage
 COPY --from=builder /root/.local /root/.local
