@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     libxml2-dev \
     libxslt1-dev \
-    libldap-2.4-2 \
+    libldap-common \
+    libldap-2.5-0 \
     libsasl2-dev \
     libssl-dev \
     node-less \
@@ -42,7 +43,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     libxml2 \
     libxslt1.1 \
-    libldap-2.4-2 \
+    libldap-common \
+    libldap-2.5-0 \
     libsasl2-2 \
     fonts-noto-cjk \
     wkhtmltopdf \
@@ -66,9 +68,6 @@ RUN chown odoo:odoo /etc/odoo/odoo.conf
 # Copy entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-# Set up volumes for persistent data
-#VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 # Expose Odoo ports
 EXPOSE 8069 8071 8072
