@@ -12,12 +12,7 @@ fi
 
 # Wait for PostgreSQL to be available
 echo "Waiting for PostgreSQL to be ready..."
-/usr/local/bin/wait-for-psql.py \
-  --db_host="$DB_HOST" \
-  --db_port="$DB_PORT" \
-  --db_user="$DB_USER" \
-  --db_password="$DB_PASSWORD" \
-  --timeout=30
+
 
 if [ $? -ne 0 ]; then
   echo "Error: PostgreSQL is not ready within the timeout period."
